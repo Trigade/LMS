@@ -1,4 +1,4 @@
-class BooksRepository:
+class BooksService:
     def __init__(self,repository):
         self.__repository = repository
 
@@ -12,7 +12,7 @@ class BooksRepository:
         self.__repository.delete(id)
         
     def get_book(self,id):
-        self.__repository.get_by_id(id)
+        return self.__repository.get_by_id(id)
 
     def get_books(self):
-        self.__repository.get_all()
+        return self.__repository.get_all()
