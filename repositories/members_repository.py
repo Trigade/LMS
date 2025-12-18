@@ -7,17 +7,12 @@ class MembersReporsitory:
             cursor = conn.cursor()
             cursor.execute(
                 """
-                    INSERT INTO members(first_name,last_name,email,phone,join_date,membership_status) VALUES (?,?,?,?,?)
-            """,
-                member.first_name,
-                member.last_name,
-                member.email,
-                member.phone,
-                member.phone,
-                member.join_date,
-                member.membersip_status,
+                INSERT INTO members(first_name, last_name, email, phone) 
+                VALUES (?, ?, ?, ?)
+                """,
+                (member.first_name, member.last_name, member.email, member.phone),
             )
-            print("Uye barasiyla eklendi")
+            print("Üye başarıyla eklendi")
 
     def update(self, member):
         pass

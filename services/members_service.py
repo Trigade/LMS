@@ -2,13 +2,13 @@ class MembersService:
     def __init__(self, repository):
         self.__repository = repository
 
-    def add(self, member):
+    def add_member(self, member):
         self.__repository.add(member)
 
-    def update(self, member):
+    def update_member(self, member):
         pass
 
-    def delete(self, id):
+    def delete_member(self, id):
         self.__repository.delete(id)
 
     def get_by_id(self, id):
