@@ -1,4 +1,4 @@
-class MembersReporsitory:
+class MembersRepository:
     def __init__(self, db):
         self.__db = db
 
@@ -22,7 +22,7 @@ class MembersReporsitory:
             cursor = conn.cursor()
             cursor.execute(
                 """
-                DELETE FROM books WHERE id=?
+                DELETE FROM members WHERE id=?
         """,
                 (id,),
             )

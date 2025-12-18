@@ -1,5 +1,5 @@
 class Publisher:
-    def __init__(self,id,name,address,phone):
+    def __init__(self,name,address,phone,id = None):
         self.id = id
         self.name = name
         self.address = address

@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS categories (
 
 CREATE TABLE IF NOT EXISTS publishers (
     id INTEGER PRIMARY KEY,
+    name VARCHAR(20),
     address VARCHAR(100),
     phone VARCHAR(20) UNIQUE
 );
