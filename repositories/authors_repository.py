@@ -43,5 +43,5 @@ class AuthorsRepository:
             cursor.execute("""
                             SELECT * FROM authors
                             """)
-            authors = conn.fetchall()
+            authors = cursor.fetchall()
             return [list(author) for author in authors]
