@@ -8,8 +8,10 @@ class AuthorsService:
             cursor = conn.cursor()
             self.__repository.add(author, cursor)
     
-    def update_author():
-        pass
+    def update_author(self,author):
+        with self.__db as conn:
+            cursor = conn.cursor()
+            self.__repository.update(author, cursor)
 
     def delete_author(self,id):
         with self.__db as conn:

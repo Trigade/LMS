@@ -8,8 +8,10 @@ class LoansService:
             cursor = conn.cursor()
             self.__repository.add(loan,cursor)
             
-    def update(self,id):
-        pass
+    def update(self,loan):
+        with self.__db as conn:
+            cursor = conn.cursor()
+            self.__repository.update(loan, cursor)
 
     def delete_loan(self,id):
         with self.__db as conn:

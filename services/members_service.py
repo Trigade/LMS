@@ -9,7 +9,9 @@ class MembersService:
             self.__repository.add(member,cursor)
 
     def update_member(self, member):
-        pass
+        with self.__db as conn:
+            cursor = conn.cursor()
+            self.__repository.update(member, cursor)
 
     def delete_member(self, id):
         with self.__db as conn:

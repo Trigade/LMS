@@ -8,8 +8,10 @@ class CategoriesService:
             cursor = conn.cursor()
             self.__repository.add(category,cursor)
             
-    def update(self,id):
-        pass
+    def update(self,category):
+        with self.__db as conn:
+            cursor = conn.cursor()
+            self.__repository.update(category, cursor)
 
     def delete_category(self,id):
         with self.__db as conn:

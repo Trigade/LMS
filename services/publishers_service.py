@@ -8,8 +8,10 @@ class PublishersService:
             cursor = conn.cursor()
             self.__repository.add(publisher, cursor)
 
-    def update(self, book):
-        pass
+    def update(self, publisher):
+        with self.__db as conn:
+            cursor = conn.cursor()
+            self.__repository.update(publisher, cursor)
 
     def delete_publisher(self, id):
         with self.__db as conn:

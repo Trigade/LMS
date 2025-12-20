@@ -13,13 +13,22 @@ class CategoriesRepository:
             ),
         )
 
-    def update(self, id, cursor):
-        pass
+    def update(self, category, cursor):
+        cursor.execute(
+            """
+                        UPDATE categories SET category_name=?,description=? WHERE id=?
+                        """,
+            (
+                category.category_name,
+                category.description,
+                category.id,
+            ),
+        )
 
     def delete(self, id, cursor):
         cursor.execute(
             """
-                            DELETE * FROM categories WHERE id=?
+                            DELETE FROM categories WHERE id=?
                             """,
             (id,),
         )

@@ -14,8 +14,18 @@ class PublishersRepository:
             ),
         )
 
-    def update(self, book):
-        pass
+    def update(self, publisher, cursor):
+        cursor.execute(
+            """
+                    UPDATE publishers SET name=?,address=?,phone=?  WHERE id=?
+                        """,
+            (
+                publisher.name,
+                publisher.address,
+                publisher.phone,
+                publisher.id,
+            ),
+        )
 
     def delete(self, id, cursor):
         cursor.execute(

@@ -8,7 +8,9 @@ class BooksService:
             self.__repository.add(book,cursor)
 
     def update_book(self,book):
-        pass
+        with self.__db as conn:
+            cursor = conn.cursor()
+            self.__repository.update(book, cursor)
 
     def delete_book(self,id):
         with self.__db as conn:

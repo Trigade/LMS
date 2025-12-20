@@ -14,8 +14,18 @@ class AuthorsRepository:
             ),
         )
 
-    def update():
-        pass
+    def update(id, author, cursor):
+        cursor.execute(
+            """
+                        UPDATE authors SET first_name = ?,last_name=?,biography=?, WHERE id = ?
+                    """,
+            (
+                author.first_name,
+                author.last_name,
+                author.biography,
+                author.id,
+            ),
+        )
 
     def delete(self, id, cursor):
         cursor.execute(

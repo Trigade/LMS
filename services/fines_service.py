@@ -8,8 +8,10 @@ class FinesService:
             cursor = conn.cursor()
             self.__repository.add(fine,cursor)
 
-    def update(self):
-        pass
+    def update(self,fine):
+        with self.__db as conn:
+            cursor = conn.cursor()
+            self.__repository.update(fine, cursor)
 
     def delete_fine(self,id):
         with self.__db as conn:

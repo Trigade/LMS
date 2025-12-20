@@ -14,13 +14,23 @@ class FinesRepository:
             ),
         )
 
-    def update(self, id):
-        pass
+    def update(self, fine, cursor):
+        cursor.execute(
+            """
+                        UPDATE fines SET amount=?,payment_status=?,loan_id=? WHERE id=?
+                        """,
+            (
+                fine.amount,
+                fine.payment_status,
+                fine.loan_id,
+                fine.id,
+            ),
+        )
 
     def delete(self, id, cursor):
         cursor.execute(
             """
-                            DELETE * FROM fines WHERE id=?
+                            DELETE FROM fines WHERE id=?
                             """,
             (id,),
         )

@@ -16,13 +16,25 @@ class LoansRepository:
             ),
         )
 
-    def update(self, id):
-        pass
+    def update(self, loan, cursor):
+        cursor.execute(
+            """
+                        UPDATE loans SET loan_date=?,due_date=?,return_date=?,member_id=?,book_id=? WHERE id=?
+                        """,
+            (
+                loan.loan_date,
+                loan.due_date,
+                loan.return_date,
+                loan.member_id,
+                loan.book_id,
+                loan.id,
+            ),
+        )
 
     def delete(self, id, cursor):
         cursor.execute(
             """
-                            DELETE * FROM loans WHERE id=?
+                            DELETE FROM loans WHERE id=?
                             """,
             (id,),
         )

@@ -11,8 +11,19 @@ class MembersRepository:
             (member.first_name, member.last_name, member.email, member.phone),
         )
 
-    def update(self, member):
-        pass
+    def update(self, member, cursor):
+        cursor.execute(
+            """
+                        UPDATE members SET first_name=?,last_name = ?,email =?,phone=? WHERE id = ?
+                        """,
+            (
+                member.first_name,
+                member.last_name,
+                member.email,
+                member.phone,
+                member.id,
+            ),
+        )
 
     def delete(self, id, cursor):
         cursor.execute(
