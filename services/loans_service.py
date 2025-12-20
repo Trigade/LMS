@@ -1,18 +1,27 @@
 class LoansService:
-    def __init__(self,repository):
+    def __init__(self,repository,db):
         self.__repository = repository
+        self.__db = db
 
     def add_loan(self,loan):
-        self.__repository.add(loan)
+        with self.__db as conn:
+            cursor = conn.cursor()
+            self.__repository.add(loan,cursor)
             
     def update(self,id):
         pass
 
     def delete_loan(self,id):
-        self.__repository.delete(id)
+        with self.__db as conn:
+            cursor = conn.cursor()
+            self.__repository.delete(id,cursor)
             
     def get_by_id(self,id):
-        return self.__repository.get_by_id(id)
+        with self.__db as conn:
+            cursor = conn.cursor()
+            return self.__repository.get_by_id(id,cursor)
         
     def get_all(self):
-        return self.__repository.get_all()
+        with self.__db as conn:
+            cursor = conn.cursor()
+            return self.__repository.get_all(cursor)

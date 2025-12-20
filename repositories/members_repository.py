@@ -1,49 +1,41 @@
 class MembersRepository:
-    def __init__(self, db):
-        self.__db = db
+    def __init__(self):
+        pass
 
-    def add(self, member):
-        with self.__db as conn:
-            cursor = conn.cursor()
-            cursor.execute(
-                """
+    def add(self, member, cursor):
+        cursor.execute(
+            """
                 INSERT INTO members(first_name, last_name, email, phone) 
                 VALUES (?, ?, ?, ?)
                 """,
-                (member.first_name, member.last_name, member.email, member.phone),
-            )
-            print("Üye başarıyla eklendi")
+            (member.first_name, member.last_name, member.email, member.phone),
+        )
 
     def update(self, member):
         pass
 
-    def delete(self, id):
-        with self.__db as conn:
-            cursor = conn.cursor()
-            cursor.execute(
-                """
+    def delete(self, id, cursor):
+        cursor.execute(
+            """
                 DELETE FROM members WHERE id=?
         """,
-                (id,),
-            )
+            (id,),
+        )
 
-    def get_by_id(self, id):
-        with self.__db as conn:
-            cursor = conn.cursor()
-            cursor.execute(
-                """
+    def get_by_id(self, id, cursor):
+        cursor.execute(
+            """
                 SELECT * FROM members WHERE id = ?
         """,
-                (id,),
-            )
+            (id,),
+        )
+
         member = cursor.fetchone()
         return list(member)
 
-    def get_all(self):
-        with self.__db as conn:
-            cursor = conn.cursor()
-            cursor.execute("""
+    def get_all(self, cursor):
+        cursor.execute("""
                             SELECT * FROM members
                 """)
-            members = cursor.fetchall()
-            return [list(member) for member in members]
+        members = cursor.fetchall()
+        return [list(member) for member in members]

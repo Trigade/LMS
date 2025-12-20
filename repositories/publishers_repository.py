@@ -1,48 +1,43 @@
 class PublishersRepository:
-    def __init__(self,db):
-        self.__db = db
+    def __init__(self):
+        pass
 
-    def add(self,publisher):
-        with self.__db as conn:
-            cursor = conn.cursor()
-            cursor.execute("""
+    def add(self, publisher, cursor):
+        cursor.execute(
+            """
                     INSERT INTO publishers(name,address,phone) VALUES (?,?,?)
                         """,
-                        (publisher.name,
-                         publisher.address,
-                         publisher.phone,
-                         )
-                        )
-            
+            (
+                publisher.name,
+                publisher.address,
+                publisher.phone,
+            ),
+        )
+
     def update(self, book):
         pass
 
-    def delete(self, id):
-        with self.__db as conn:
-            cursor = conn.cursor()
-            cursor.execute(
-                """
+    def delete(self, id, cursor):
+        cursor.execute(
+            """
                 DELETE FROM publishers WHERE id=?
         """,
-                (id,)
-            )
+            (id,),
+        )
 
-    def get_by_id(self, id):
-        with self.__db as conn:
-            cursor = conn.cursor()
-            cursor.execute("""
+    def get_by_id(self, id, cursor):
+        cursor.execute(
+            """
                         SELECT * FROM publishers WHERE id=?
                             """,
-                            (id,)
-                            )
+            (id,),
+        )
         publisher = cursor.fetchone()
         return list(publisher)
-    
-    def get_all(self):
-        with self.__db as conn:
-            cursor = conn.cursor()
-            cursor.execute("""
+
+    def get_all(self, cursor):
+        cursor.execute("""
                             SELECT * FROM publishers
                             """)
-            publishers = cursor.fetchall()
-            return [list(publisher) for publisher in publishers]
+        publishers = cursor.fetchall()
+        return [list(publisher) for publisher in publishers]
