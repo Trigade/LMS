@@ -43,7 +43,7 @@ class FinesRepository:
             (id,),
         )
         fine = cursor.fetchone()
-        return list(fine)
+        return list(fine) if fine else None
 
     def get_all(self, cursor):
         cursor.execute(

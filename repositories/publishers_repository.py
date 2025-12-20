@@ -43,7 +43,7 @@ class PublishersRepository:
             (id,),
         )
         publisher = cursor.fetchone()
-        return list(publisher)
+        return list(publisher) if publisher else None
 
     def get_all(self, cursor):
         cursor.execute("""

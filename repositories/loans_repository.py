@@ -47,7 +47,7 @@ class LoansRepository:
             (id,),
         )
         loan = cursor.fetchone()
-        return list(loan)
+        return list(loan) if loan else None
 
     def get_all(self, cursor):
         cursor.execute(

@@ -42,7 +42,7 @@ class MembersRepository:
         )
 
         member = cursor.fetchone()
-        return list(member)
+        return list(member) if member else None
 
     def get_all(self, cursor):
         cursor.execute("""

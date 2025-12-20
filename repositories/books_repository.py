@@ -49,7 +49,7 @@ class BooksRepository:
             (id,),
         )
         book = cursor.fetchone()
-        return list(book)
+        return list(book) if book else None
 
     def get_all(self, cursor):
         cursor.execute("""

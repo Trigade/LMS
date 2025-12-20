@@ -14,10 +14,10 @@ class AuthorsRepository:
             ),
         )
 
-    def update(id, author, cursor):
+    def update(self, author, cursor):
         cursor.execute(
             """
-                        UPDATE authors SET first_name = ?,last_name=?,biography=?, WHERE id = ?
+                        UPDATE authors SET first_name = ?,last_name=?,biography=? WHERE id = ?
                     """,
             (
                 author.first_name,
@@ -43,7 +43,7 @@ class AuthorsRepository:
             (id,),
         )
         author = cursor.fetchone()
-        return list(author)
+        return list(author) if author else None
 
     def get_all(self, cursor):
         cursor.execute("""

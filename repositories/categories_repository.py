@@ -40,8 +40,8 @@ class CategoriesRepository:
                             """,
             (id,),
         )
-        category = cursor.fecthone()
-        return list(category)
+        category = cursor.fetchone()
+        return list(category) if category else None
 
     def get_all(self, cursor):
         cursor.execute("""
