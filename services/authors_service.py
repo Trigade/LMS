@@ -42,7 +42,7 @@ class AuthorsService:
         try:
             with self.__db as conn:
                 cursor = conn.cursor()
-                if not self.__repository.get_by_id(id.cursor):
+                if not self.__repository.get_by_id(id,cursor):
                     print(f"{id} için yazar bulunamadı")
                     return None
                 return self.__repository.get_by_id(id,cursor)

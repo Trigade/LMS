@@ -52,7 +52,7 @@ class CategoriesService:
         try:
             with self.__db as conn:
                 cursor = conn.cursor()
-                self.__repository.get_all(cursor)
+                return self.__repository.get_all(cursor)
         except sq.Error as e:
             print(f"Kategoriler listelenirken bir veritabanı hatası oluştu {e}")
             return []
