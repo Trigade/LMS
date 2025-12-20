@@ -1,5 +1,5 @@
 class Loans:
-    def __init__(self,id,loan_date,due_date,return_date,member_id,book_id):
+    def __init__(self,loan_date,due_date,return_date,member_id,book_id,id = None):
         self.id = id
         self.loan_date = loan_date
         self.due_date = due_date
